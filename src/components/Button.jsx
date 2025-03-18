@@ -15,13 +15,27 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderWidth: 1,
         borderColor: '#888'
+    },
+    operationButton: {
+        color: '#fff',
+        backgroundColor: '#fa8231'
+    },
+    buttonDouble: {
+        width: (Dimensions.get('window').width / 4) * 2
+    },
+    buttonTriple: {
+        width: (Dimensions.get('window').width / 4) * 3
     }
 })
 
 export const Button = (button) => {
+    const stylesButton = [styles.button]
+    if(button.double) stylesButton.push(styles.buttonDouble)
+    if(button.triple) stylesButton.push(styles.buttonTriple)
+    if(button.operation) stylesButton.push(styles.operationButton)
     return(
         <TouchableHighlight onPress={button.onClick}>
-            <Text style={styles.button}>{button.label}</Text>
+            <Text style={stylesButton}>{button.label}</Text>
         </TouchableHighlight>
     )
 } 
